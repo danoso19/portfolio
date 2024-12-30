@@ -1,0 +1,22 @@
+meu-portfolio/
+│
+├── index.html             # Página principal (Home)
+├── about.html             # Página "Sobre Mim" (opcional)
+├── projects.html          # Página "Projetos" (opcional)
+├── contact.html           # Página "Contato" (opcional)
+│
+├── assets/                # Diretório para recursos gerais
+│   ├── css/               # Arquivos de estilos
+│   │   └── style.css      # CSS principal
+│   ├── js/                # Scripts JavaScript
+│   │   └── script.js      # JavaScript principal
+│   ├── img/               # Imagens do site
+│   │   ├── profile.jpg    # Foto de perfil
+│   │   ├── project1.jpg   # Imagem do projeto 1
+│   │   ├── project2.jpg   # Imagem do projeto 2
+│   │   └── ...            # Outras imagens
+│   └── fonts/             # Fontes personalizadas (opcional)
+│
+├── docs/                  # Documentação do projeto (opcional)
+├── README.md              # Descrição geral do site
+└── .gitignore             # Configurações para versionamento
