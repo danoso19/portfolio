@@ -64,11 +64,70 @@
 
 
 
-    //script para expadir a descrição automaticamente
-
-    function autoResize(textarea) {
-        // Reseta a altura para recalcular corretamente
-        textarea.style.height = 'auto';
-        // Ajusta a altura conforme o conteúdo, com limite máximo de altura
-        textarea.style.height = Math.min(textarea.scrollHeight, 300) + 'px';
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+         // Remove os atributos 'visibility' e 'opacity' do body
+        const body = document.body;
+        body.style.visibility = "visible";
+        body.style.opacity = "1";
+    
+        // Inicia GSAP Timeline
+        const timeline = gsap.timeline();
+    
+        timeline
+            .from("header", { 
+                duration: 1, 
+                opacity: 0, 
+                y: -50, 
+                ease: "power2.out" 
+            })
+            .from("header h1", { 
+                duration: 0.8, 
+                opacity: 0, 
+                y: 30, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from("header p", { 
+                duration: 0.8, 
+                opacity: 0, 
+                y: 30, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from(".header-options button", { 
+                duration: 0.6, 
+                opacity: 0,  
+                stagger: 0.2, 
+                ease: "back.out(1.7)" 
+            }, "-=0.3")
+            .from(".about", { 
+                duration: 0.8, 
+                opacity: 0, 
+                x: -50, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from(".tecnologias .tecnologia", { 
+                duration: 0.6, 
+                opacity: 0, 
+                stagger: 0.2, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from(".projects .project", { 
+                duration: 0.6, 
+                opacity: 0, 
+                y: 50, 
+                stagger: 0.2, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from(".contact", { 
+                duration: 0.8, 
+                opacity: 0, 
+                y: 50, 
+                ease: "power2.out" 
+            }, "-=0.5")
+            .from("footer", { 
+                duration: 0.8, 
+                opacity: 0, 
+                y: 50, 
+                ease: "power2.out" 
+            }, "-=0.3");
+    });
+    

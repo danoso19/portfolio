@@ -4,89 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Daniel Siqueira, desenvolvedor web">
+    <meta name="keywords" content="desenvolvedor, web, HTML, CSS, JavaScript, Python, portfólio">
     <title>Meu Portfólio</title>
-    <link rel="stylesheet" href = "assets\css\style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=description" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 </head>
 
 <body>
     <header>
         <div class="header-options">
-            <button class="option-buttons" role="button"><span class="text">Sobre</span></button>
-            <button class="option-buttons" role="button"><span class="text">Projetos</span></button>
-            <button class="option-buttons" role="button"><span class="text">Contato</span></button>
-
+            <button class="option-buttons" role="button" aria-label="Ir para seção Sobre"><span class="text">Sobre</span></button>
+            <button class="option-buttons" role="button" aria-label="Ir para seção Projetos"><span class="text">Projetos</span></button>
+            <button class="option-buttons" role="button" aria-label="Ir para seção Contato"><span class="text">Contato</span></button>
         </div>
         <h1>Bem-vindo ao Meu Portfólio</h1>
         <p>Explorando projetos e habilidades</p>
         <div class="swipe-bar-block">
-        <div class="swipe-bar"></div>
+            <div class="swipe-bar"></div>
         </div>
     </header>
 
-
-    <div class="container">
+    <main class="container">
         <section id="about" class="about">
             <h2>Sobre Mim</h2>
             <p>Olá! Sou <span class="meu-nome">Daniel Siqueira</span>, um desenvolvedor com sede de soluções inovadoras. Com experiência em desenvolvimento web, gosto de transformar ideias em realidade.</p>
-            <img src="assets\img\daniel png.png" alt="Minha foto">
+            <img src="assets/img/daniel png.png" alt="Foto de Daniel Siqueira">
         </section>
 
         <section id="tecnologias" class="tecnologias">
             <h2>Tecnologias</h2>
             <div class="tecnologia">
-                <img src="assets/img/icons8-html.svg">
+                <img src="assets/img/icons8-html.svg" alt="Ícone representando HTML5">
                 <h3>HTML 5</h3>
             </div>
+            <!-- Outras tecnologias... -->
 
             <div class="tecnologia">
-                <img src="assets/img/icons8-css3.svg">
+                <img src="assets/img/icons8-css3.svg" alt="Ícone representando CSS3">
                 <h3>CSS3</h3>
             </div>
 
             <div class="tecnologia">
-                <img src="assets/img/icons8-js.svg">
+                <img src="assets/img/icons8-js.svg" alt="Ícone representando Java Script">
                 <h3>Java Script</h3>
             </div>
 
             <div class="tecnologia">
-                <img src="assets/img/icons8-python (1).svg">
+                <img src="assets/img/icons8-python (1).svg" alt="Ícone representando Python">
                 <h3>Python</h3>
             </div>
 
             <div class="tecnologia">
-                <img src="assets/img/icons8-git.svg">
+                <img src="assets/img/icons8-git.svg" alt="Ícone representando Git">
                 <h3>Git</h3>
             </div>
 
             <div class="tecnologia">
-                <img src="assets/img/icons8-github (1).svg">
+                <img src="assets/img/icons8-github (1).svg" alt="Ícone representando Github">
                 <h3>Github</h3>
             </div>
-
-
         </section>
 
         <section id="projects" class="projects">
             <h2>Projetos</h2>
             <div class="project">
                 <h3>Projeto 1</h3>
-                <img src="assets/img/interrogação.png">
+                <img src="assets/img/interrogação.png" alt="Imagem representativa do Projeto 1">
                 <p>Descrição breve do projeto.</p>
-                <a href="#">Ver mais</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Ver mais</a>
             </div>
-            <div class="project">
-                <h3>Projeto 2</h3>
-                <img src="assets/img/interrogação.png">
-                <p>Descrição breve do projeto.</p>
-                <a href="#">Ver mais</a>
-            </div>
-            <div class="project">
-                <h3>Projeto 3</h3>
-                <img src="assets/img/interrogação.png">
-                <p>Descrição breve do projeto.</p>
-                <a href="#">Ver mais</a>
-            </div>
+            <!-- Outros projetos... -->
         </section>
 
         <section id="contact" class="contact">
@@ -94,21 +82,23 @@
             <p>Interessado em trabalhar comigo? Entre em contato!</p>
             <form>
                 <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Seu nome" required>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Seu email" required>
                 <label for="message">Mensagem:</label>
-                <textarea id="myTextarea" oninput="autoResize(this)" rows="5" required></textarea>
+                <textarea id="message" name="message" placeholder="Sua mensagem" required></textarea>
                 <button type="submit">Enviar</button>
             </form>
         </section>
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2024 Daniel Siqueira. Todos os direitos reservados. <a href="#">Política de Privacidade</a></p>
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
 </body>
 
 </html>
