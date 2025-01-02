@@ -22,9 +22,10 @@
             // Para toque, usamos e.touches[0].clientY, para mouse, usamos e.clientY
             const deltaY = (e.touches ? e.touches[0].clientY : e.clientY) - startY;
             const newHeight = startHeight + deltaY;
+            console.log(newHeight);
 
             // Define a nova altura, com um limite máximo
-            if (newHeight >= 165 && newHeight <= 250) {
+            if (newHeight >= 150 && newHeight <= 350) {
                 header.style.height = newHeight + 'px';
             }
         }
@@ -77,27 +78,9 @@
             .from("header", { 
                 duration: 1, 
                 opacity: 0, 
-                y: -50, 
+                y: -40, 
                 ease: "power2.out" 
-            })
-            .from("header h1", { 
-                duration: 0.8, 
-                opacity: 0, 
-                y: 30, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from("header p", { 
-                duration: 0.8, 
-                opacity: 0, 
-                y: 30, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from(".header-options button", { 
-                duration: 0.6, 
-                opacity: 0,  
-                stagger: 0.2, 
-                ease: "back.out(1.7)" 
-            }, "-=0.3")
+            })  
             .from(".about", { 
                 duration: 0.8, 
                 opacity: 0, 
