@@ -54,7 +54,7 @@ header {
 }
 
 .header-size-spacer{
-    height: 250px;
+    height: 200px;
     z-index: -1;
     opacity: 0;
     width: auto;
@@ -218,11 +218,11 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .contact input, .contact textarea, .contact button {
-    width: 98%;
+    width: 94.2%;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -231,6 +231,7 @@ header {
     color: #fff;
     font-size: 16px;
     box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2);
+    resize: none;
 }
 
 .contact button {
@@ -238,6 +239,7 @@ header {
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 .contact button:hover {
