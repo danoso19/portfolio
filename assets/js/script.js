@@ -1,61 +1,83 @@
-    const swipeBar = document.querySelector('.swipe-bar-block');
-    const header = document.querySelector('header');
-    let isDragging = false;
-    let startY;
-    let startHeight;
+const swipeBar = document.querySelector('.swipe-bar-block');
+const header = document.querySelector('header');
+let isDragging = false;
+let startY = 0;
+let startHeight = 0;
 
-    // Função para começar o arraste (para mouse e toque)
-    const startDrag = (e) => {
-        isDragging = true;
-        // Para toque, usamos e.touches[0].clientY, para mouse, usamos e.clientY
-        startY = e.touches ? e.touches[0].clientY : e.clientY;
-        startHeight = header.offsetHeight;
+// Função para iniciar o arraste
+const startDrag = (e) => {
+    isDragging = true;
 
-        // Desativa o comportamento de rolagem enquanto arrasta
-        document.body.style.overflow = 'hidden'; // Desativa a rolagem da página
-        document.body.style.userSelect = 'none'; // Desativa a seleção de texto enquanto arrasta
-    };
+    // Registra a posição inicial (toque ou mouse)
+    startY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    // Função para arrastar (para mouse e toque)
-    const doDrag = (e) => {
-        if (isDragging) {
-            // Para toque, usamos e.touches[0].clientY, para mouse, usamos e.clientY
-            const deltaY = (e.touches ? e.touches[0].clientY : e.clientY) - startY;
-            const newHeight = startHeight + deltaY;
-            console.log(newHeight);
+    // Obtém a altura atual do header
+    startHeight = header.offsetHeight;
 
-            // Define a nova altura, com um limite máximo
-            if (newHeight >= 150 && newHeight <= 350) {
-                header.style.height = newHeight + 'px';
-            }
-        }
-    };
+    // Previne comportamentos indesejados durante o arraste
+    document.body.style.overflow = 'hidden'; // Impede rolagem
+    document.body.style.userSelect = 'none'; // Impede seleção de texto
+    header.style.transition = 'none'; // Remove transições durante o arraste
+};
 
-    // Função para terminar o arraste (para mouse e toque)
-    const stopDrag = () => {
-        isDragging = false;
-        document.body.style.overflow = ''; // Restaura a rolagem da página
-        document.body.style.userSelect = ''; // Restaura a seleção de texto
-    };
+// Função de arraste
+const doDrag = (e) => {
+    if (!isDragging) return;
 
-    // Adiciona eventos para mouse
-    swipeBar.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', doDrag);
-    document.addEventListener('mouseup', stopDrag);
 
-    // Adiciona eventos para toque
-    swipeBar.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', (e) => {
-        // Previne a rolagem da página enquanto arrasta
-        e.preventDefault();
-        doDrag(e);
-    });
-    document.addEventListener('touchend', stopDrag);
+    // Impede o comportamento padrão para evitar rolagem
+    e.preventDefault();
 
-    // Impede que o usuário arraste de forma indesejada ao clicar na swipe-bar
-    swipeBar.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-    });
+    // Calcula o deslocamento
+    const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+    const deltaY = currentY - startY;
+
+    // Calcula a nova altura com base no deslocamento
+    const newHeight = startHeight + deltaY;
+
+    // Aplica limites à altura do header
+    if (newHeight >= 150 && newHeight <= 350) {
+        header.style.height = `${newHeight}px`;
+    }
+};
+
+// Função para finalizar o arraste
+const stopDrag = () => {
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    // Restaura o comportamento normal
+    document.body.style.overflow = '';
+    document.body.style.userSelect = '';
+
+    // Ajusta a altura final do header para o valor mais próximo
+    const currentHeight = header.offsetHeight;
+    const finalHeight = currentHeight > 250 ? 350 : 150; // Define o estado final (aberto ou fechado)
+
+    header.style.height = `${finalHeight}px`;
+    header.style.transition = 'height 0.3s ease'; // Reintroduz transições suaves
+};
+
+// Adiciona eventos para mouse
+swipeBar.addEventListener('mousedown', startDrag);
+document.addEventListener('mousemove', doDrag);
+document.addEventListener('mouseup', stopDrag);
+
+// Adiciona eventos para toque
+swipeBar.addEventListener('touchstart', startDrag);
+document.addEventListener('touchmove', (e) => {
+    if (isDragging) e.preventDefault(); // Previne rolagem
+    doDrag(e);
+});
+document.addEventListener('touchend', stopDrag);
+
+// Impede comportamento indesejado ao arrastar
+swipeBar.addEventListener('dragstart', (e) => e.preventDefault());
+
+
+
+
 
 
 
