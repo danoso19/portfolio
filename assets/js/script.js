@@ -1,4 +1,4 @@
-const swipeBar = document.querySelector('.swipe-bar-block');
+const swipeBar = document.querySelector('header');
 const header = document.querySelector('header');
 let isDragging = false;
 let startY = 0;
@@ -36,7 +36,7 @@ const doDrag = (e) => {
     const newHeight = startHeight + deltaY;
 
     // Aplica limites à altura do header
-    if (newHeight >= 150 && newHeight <= 350) {
+    if (newHeight >= 200 && newHeight <= 300) {
         header.style.height = `${newHeight}px`;
     }
 };
@@ -53,7 +53,7 @@ const stopDrag = () => {
 
     // Ajusta a altura final do header para o valor mais próximo
     const currentHeight = header.offsetHeight;
-    const finalHeight = currentHeight > 250 ? 350 : 150; // Define o estado final (aberto ou fechado)
+    const finalHeight = currentHeight > 250 ? 300 : 200; // Define o estado final (aberto ou fechado)
 
     header.style.height = `${finalHeight}px`;
     header.style.transition = 'height 0.3s ease'; // Reintroduz transições suaves
