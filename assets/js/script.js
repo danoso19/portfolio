@@ -54,9 +54,12 @@ const stopDrag = () => {
     // Ajusta a altura final do header para o valor mais próximo
     const currentHeight = header.offsetHeight;
     const finalHeight = currentHeight > 250 ? 300 : 200; // Define o estado final (aberto ou fechado)
+    const swipeDown = document.querySelector('.swipe-down');
+
 
     header.style.height = `${finalHeight}px`;
     header.style.transition = 'height 0.3s ease'; // Reintroduz transições suaves
+    swipeDown.style.display = 'none';
 };
 
 // Adiciona eventos para mouse
