@@ -151,7 +151,7 @@ header img{
 .tecnologias {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 8px;
+    gap: 5px;
     width: 100%;
 }
 
@@ -167,8 +167,10 @@ header img{
     background-color: #3e1a6d;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    width: 105px;
-    height: 105px;
+    width: auto;
+    max-width: 100px;
+    height: auto;
+    max-height: 110px;
 }
 
 .tecnologia h3{
