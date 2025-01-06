@@ -151,26 +151,32 @@ header img{
 .tecnologias {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 20px;
+    gap: 8px;
     width: 100%;
 }
 
 .tecnologia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     background-color: #3e1a6d;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    width: auto;
-    max-width: 80px;
-    height: 120px;
+    width: 105px;
+    height: 105px;
+}
+
+.tecnologia h3{
+    margin: 0;
 }
 
 .tecnologia img {
     max-width: 80%;
-    margin-bottom: 0;
 }
 
 .tecnologia:hover {
