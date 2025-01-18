@@ -36,9 +36,18 @@ const doDrag = (e) => {
     const newHeight = startHeight + deltaY;
 
     // Aplica limites à altura do header
-    if (newHeight >= 200 && newHeight <= 300) {
-        header.style.height = `${newHeight}px`;
+    if (window.innerWidth >= 769) { 
+        // Para telas maiores
+        if (newHeight >= 150 && newHeight <= 250) {
+            header.style.height = `${newHeight}px`;
+        }
+    } else { 
+        // Para telas menores
+        if (newHeight >= 200 && newHeight <= 300) {
+            header.style.height = `${newHeight}px`;
+        }
     }
+
 };
 
 // Função para finalizar o arraste
@@ -53,14 +62,29 @@ const stopDrag = () => {
 
     // Ajusta a altura final do header para o valor mais próximo
     const currentHeight = header.offsetHeight;
-    const finalHeight = currentHeight > 250 ? 300 : 200; // Define o estado final (aberto ou fechado)
+    let finalHeight;
+
+    // Verifica a largura da janela (não do estilo do body)
+    if (window.innerWidth >= 769) {
+        // Define o estado final para telas maiores
+        finalHeight = currentHeight > 200 ? 250 : 150;
+    } else {
+        // Define o estado final para telas menores
+        finalHeight = currentHeight > 250 ? 300 : 200;
+    }
+
     const swipeDown = document.querySelector('.swipe-down');
 
-
+    // Aplica o valor calculado de altura ao header
     header.style.height = `${finalHeight}px`;
     header.style.transition = 'height 0.3s ease'; // Reintroduz transições suaves
-    swipeDown.style.display = 'none';
+
+    // Esconde o elemento de swipe-down
+    if (swipeDown) {
+        swipeDown.style.display = 'none';
+    }
 };
+
 
 // Adiciona eventos para mouse
 swipeBar.addEventListener('mousedown', startDrag);
@@ -90,52 +114,53 @@ swipeBar.addEventListener('dragstart', (e) => e.preventDefault());
 
 
 
-    document.addEventListener("DOMContentLoaded", () => {
-         // Remove os atributos 'visibility' e 'opacity' do body
-        const body = document.body;
-        body.style.visibility = "visible";
-        body.style.opacity = "1";
-    
-        // Inicia GSAP Timeline
-        const timeline = gsap.timeline();
-    
-        timeline
-            .from("header", { 
-                duration: 1, 
-                opacity: 0, 
-                y: -40, 
-                ease: "power2.out" 
-            })  
-            .from(".about", { 
-                duration: 0.8, 
-                opacity: 0, 
-                x: -50, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from(".tecnologias .tecnologia", { 
-                duration: 0.6, 
-                opacity: 0, 
-                stagger: 0.2, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from(".projects .project", { 
-                duration: 0.6, 
-                opacity: 0, 
-                y: 50, 
-                stagger: 0.2, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from(".contact", { 
-                duration: 0.8, 
-                opacity: 0, 
-                y: 50, 
-                ease: "power2.out" 
-            }, "-=0.5")
-            .from("footer", { 
-                duration: 0.8, 
-                opacity: 0, 
-                y: 50, 
-                ease: "power2.out" 
-            }, "-=0.3");
-    });
-    
+document.addEventListener("DOMContentLoaded", () => {
+    // Remove os atributos 'visibility' e 'opacity' do body
+    const body = document.body;
+    body.style.visibility = "visible";
+    body.style.opacity = "1";
+    body.style.width = "100%";
+    body.style.alignItems = "center";
+
+    // Inicia GSAP Timeline
+    const timeline = gsap.timeline();
+
+    timeline
+        .from("header", { 
+            duration: 1, 
+            opacity: 0, 
+            y: -40, 
+            ease: "power2.out" 
+        })  
+        .from(".about", { 
+            duration: 0.8, 
+            opacity: 0, 
+            xPercent: -100, 
+            ease: "power2.out" 
+        }, "-=0.5")
+        .from(".tecnologias .tecnologia", { 
+            duration: 0.6, 
+            opacity: 0, 
+            stagger: 0.2, 
+            ease: "power2.out" 
+        }, "-=0.5")
+        .from(".projects .project", { 
+            duration: 0.6, 
+            opacity: 0, 
+            y: 50, 
+            stagger: 0.2, 
+            ease: "power2.out" 
+        }, "-=0.5")
+        .from(".contact", { 
+            duration: 0.8, 
+            opacity: 0, 
+            y: 50, 
+            ease: "power2.out" 
+        }, "-=0.5")
+        .from("footer", { 
+            duration: 0.8, 
+            opacity: 0, 
+            y: 50, 
+            ease: "power2.out" 
+        }, "-=0.3");
+});
