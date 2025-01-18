@@ -164,3 +164,15 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "power2.out" 
         }, "-=0.3");
 });
+
+document.getElementById('github-button').addEventListener('click', () => {
+    window.location.href = 'https://github.com/danoso19';
+});
+
+document.getElementById('instagram-button').addEventListener('click', () => {
+    window.location.href = 'https://www.instagram.com/danielfssb.dev/';
+});
+
+document.getElementById('linkedin-button').addEventListener('click', () => {
+    window.location.href = 'https://www.linkedin.com';
+});
