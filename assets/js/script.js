@@ -43,7 +43,7 @@ const doDrag = (e) => {
         }
     } else { 
         // Para telas menores
-        if (newHeight >= 200 && newHeight <= 300) {
+        if (newHeight >= 160 && newHeight <= 300) {
             header.style.height = `${newHeight}px`;
         }
     }
@@ -70,7 +70,7 @@ const stopDrag = () => {
         finalHeight = currentHeight > 200 ? 250 : 150;
     } else {
         // Define o estado final para telas menores
-        finalHeight = currentHeight > 250 ? 300 : 200;
+        finalHeight = currentHeight > 250 ? 260 : 185;
     }
 
     const swipeDown = document.querySelector('.swipe-down');
